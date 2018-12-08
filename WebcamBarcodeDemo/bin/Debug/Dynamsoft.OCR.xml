@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dynamsoft.OCR</name>
+    </assembly>
+    <members>
+        <member name="M:Dynamsoft.Common.CImage.Dispose">
+            <summary>
+            Dispose the object.
+            </summary>
+            
+            <remarks><para>Frees unmanaged resources used by the object. The object becomes unusable
+            after that.</para>
+            
+            <par><note>The method needs to be called only in the case if unmanaged image was allocated
+            using <see cref="!:Create"/> method. In the case if the class instance was created using constructor,
+            this method does not free unmanaged memory.</note></par>
+            </remarks>
+            
+        </member>
+        <member name="M:Dynamsoft.Common.CImage.Dispose(System.Boolean)">
+            <summary>
+            Dispose the object.
+            </summary>
+            
+            <param name="disposing">Indicates if disposing was initiated manually.</param>
+            
+        </member>
+        <member name="M:Dynamsoft.Common.ImageOperator.Clone(System.Drawing.Bitmap)">
+            <summary>
+            Clone image.
+            </summary>
+            
+            <param name="source">Source image.</param>
+            
+            <returns>Return clone of the source image.</returns>
+            
+            <remarks>The original <see cref="M:System.Drawing.Bitmap.Clone(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">Bitmap.Clone()</see>
+            does not produce the desired result - it does not create an actual clone (it does not create a copy
+            of the image). That is why this method was implemented to provide the functionality.</remarks> 
+            
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Dynamsoft.Common.SImageInfo.last_c_index" -->
+        <member name="T:Dynamsoft.Common.Util">
+            <summary>
+            Summary description for Util.
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.Common.Util.Clone(System.Drawing.Bitmap)">
+            <summary>
+            Clone image.
+            </summary>
+            
+            <param name="source">Source image.</param>
+            
+            <returns>Return clone of the source image.</returns>
+            
+            <remarks>The original <see cref="M:System.Drawing.Bitmap.Clone(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">Bitmap.Clone()</see>
+            does not produce the desired result - it does not create an actual clone (it does not create a copy
+            of the image). That is why this method was implemented to provide the functionality.</remarks> 
+            
+        </member>
+        <member name="M:Dynamsoft.Common.Util.Clone(System.Drawing.Imaging.BitmapData)">
+             <summary>
+             Clone image.
+             </summary>
+             
+             <param name="sourceData">Source image data.</param>
+            
+             <returns>Clones image from source image data. The message does not clone pallete in the
+             case if the source image has indexed pixel format.</returns>
+             
+        </member>
+        <member name="M:Dynamsoft.Common.Util.CopyUnmanagedMemory(System.IntPtr,System.IntPtr,System.Int32)">
+             <summary>
+             Copy block of unmanaged memory.
+             </summary>
+             
+             <param name="dst">Destination pointer.</param>
+             <param name="src">Source pointer.</param>
+             <param name="count">Memory block's length to copy.</param>
+             
+             <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+             
+             <remarks><para>This function is required because of the fact that .NET does
+             not provide any way to copy unmanaged blocks, but provides only methods to
+             copy from unmanaged memory to managed memory and vise versa.</para></remarks>
+            
+        </member>
+        <member name="T:Dynamsoft.OCR.Enums.ResultFormat">
+            <summary>
+            Supported OCR output format.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.ResultFormat.Text">
+            <summary>
+            Pure text ASCII string.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.ResultFormat.PDFPlainText">
+            <summary>
+            PDF plain text.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.ResultFormat.PDFImageOverText">
+            <summary>
+            PDF image over text.
+            </summary>
+        </member>
+        <member name="T:Dynamsoft.OCR.Enums.PageSetMode">
+            <summary>
+            Possible modes for page layout analysis.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_OSD_ONLY">
+            <summary>
+            Orientation and script detection only.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_AUTO_OSD">
+            <summary>
+            Automatic page segmentation with orientation and script detection. (OSD)
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_AUTO_ONLY">
+            <summary>
+            Automatic page segmentation, but no OSD, or OCR.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_AUTO">
+            <summary>
+            Fully automatic page segmentation, but no OSD. (Default)
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_COLUMN">
+            <summary>
+            Assume a single column of text of variable sizes.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_BLOCK_VERT_TEXT">
+            <summary>
+            Assume a single uniform block of vertically aligned text.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_BLOCK">
+            <summary>
+            Assume a single uniform block of text.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_LINE">
+            <summary>
+            Treat the image as a single text line.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_WORD">
+            <summary>
+            Treat the image as a single word.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_CIRCLE_WORD">
+            <summary>
+            Treat the image as a single word in a circle.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.PageSetMode.PSM_SINGLE_CHAR">
+            <summary>
+            Treat the image as a single character.
+            </summary>
+        </member>
+        <member name="T:Dynamsoft.OCR.Enums.TIFFCompressionType">
+            <summary>
+            TIFF file compression type.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_AUTO">
+            <summary>
+            Auto mode.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_NONE">
+            <summary>
+            Dump mode.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_RLE">
+            <summary>
+            CCITT modified Huffman RLE.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_FAX3">
+            <summary>
+            CCITT Group 3 fax encoding.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_T4">
+            <summary>
+            CCITT T.4 (TIFF 6 name).
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_FAX4">
+            <summary>
+            CCITT Group 4 fax encoding.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_T6">
+            <summary>
+            CCITT T.6 (TIFF 6 name).
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_LZW">
+            <summary>
+            Lempel Ziv and Welch.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.Enums.TIFFCompressionType.TIFF_JPEG">
+            <summary>
+            Jpeg
+            </summary>
+        </member>
+        <member name="T:Dynamsoft.OCR.ErrorCode">
+            <summary>
+            Defines the error code of Dynamsoft.PDF.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumSuccess">
+            <summary>
+            Successful.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumLicenseInvalid">
+            <summary>
+            Invalid license.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumLicenseExpired">
+            <summary>
+            Expired license.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumSystemException">
+            <summary>
+            System exception.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumUnknown">
+            <summary>
+            Unknown error.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumFailedToLoadModule">
+            <summary>
+            Failed to load OCR module.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumFailSaveAsTiff">
+            <summary>
+            Failed to save as tiff.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.OCR.ErrorCode.enumInvalidValue">
+            <summary>
+            Invalid value.
+            </summary>
+        </member>
+        <member name="T:Dynamsoft.OCR.Tesseract">
+            <summary>
+            Defines a class provides functions for recognizing text. 
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultPageSetCount">
+            <summary>
+            Returns how many pagesets there are in the OCR result.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultPageCount(System.Int32)">
+            <summary>
+            Returns the number of pages that are recognized in a specified pageset.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <returns>Int</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultLineCount(System.Int32,System.Int32)">
+            <summary>
+            Returns how many lines there are in the OCR result for a specified page in a pageset.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <returns>Int</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultWordsCount(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns how many words there are in a specified line in a specified page of a pageset.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <returns>Int</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultLineRect(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the coordinates for the rectangle that contains a specified line in a specified page of a pageset.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <returns>The string in the format of "left,top,right,bottom". For example:"12,25,200,50".</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultWordsRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the coordinates for the rectangle that contains a specified word.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <param name="iWordsIndex">Specifies the index of the word in the line.</param>
+            <returns>The string in the format of "left,top,right,bottom". For example:"12,25,200,50".</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultWordsFontSize(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the font size of a specified word in the OCR result.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <param name="iWordsIndex">Specifies the index of the word in the line.</param>
+            <returns>Int</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetResultWordsFontName(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the font name of a specified word in the OCR result.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <param name="iWordsIndex">Specifies the index of the word in the line.</param>
+            <returns>String</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.#ctor(System.String)">
+            <summary>
+            Initialize the component with features to do OCR.
+            </summary>
+            <param name="strLicense">Specifies the license. </param>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.GetRseultWordsText(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+             Returns the text of a specified word in the OCR result.
+            </summary>
+            <param name="iPageSetIndex">Specifies the index of the selected pageset.</param>
+            <param name="iPageIndex">Specifies the index of the page in the pageset.</param>
+            <param name="iLineIndex">Specifies the index of the line in the page.</param>
+            <param name="iWordsIndex">Specifies the index of the word in the line.</param>
+            <returns>String</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.Recognize(System.Drawing.Bitmap)">
+            <summary>
+            Does OCR with the bitmap of the images and return PDF stream or ASCII string.
+            </summary>
+            <param name="bit">Specifies the bitmap of images in buffer. </param>
+            <returns>Non-NULL indicates success. NULL indicates failure. Returned format is specified by ResultFormat.</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.Recognize(System.Drawing.Bitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Does zonal OCR with a list of the images and return PDF stream or ASCII string.
+            </summary>
+            <param name="bit">Specifies the bitmap of images in buffer. </param>
+            <param name="iLeft">Specifies the left edge of the OCR rectangle. </param>
+            <param name="iTop">Specifies the top edge of the OCR rectangle. </param>
+            <param name="iRight">Specifies the right edge of the OCR rectangle. </param>
+            <param name="iBottom">Specifies the bottom edge of the OCR rectangle. </param>
+            <returns>Non-NULL indicates success. NULL indicates failure. Returned format is specified by ResultFormat.</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.Recognize(System.Collections.Generic.List{System.Drawing.Bitmap})">
+            <summary>
+            Does OCR with a list of the images and return PDF stream or ASCII string.
+            </summary>
+            <param name="listBits">Specifies the list of images in buffer. The format is bitmap. </param>
+            <returns>Non-NULL indicates success. NULL indicates failure. Returned format is specified by ResultFormat.</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.OCR.Tesseract.Recognize(System.String[])">
+            <summary>
+            Does OCR with the image of a specified filenames.
+            </summary>
+            <param name="aryImageName">Specifies the the image with a specified filenames. </param>
+            <returns>Non-NULL indicates success. NULL indicates failure. Returned format is specified by ResultFormat property.</returns>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.UnicodeFontName">
+            <summary>
+            Returns or sets the unicode font name used in PDF file. For example, "Arial", "ArialUni".
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.UseDetectedFont">
+            <summary>
+            Returns or sets whether use the detected font.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.TessDataPath">
+            <summary>
+            Returns or sets the tessdata path. The datapath must be the name of the parent directory of tessdata and must be ended with '/' . Any words after the last '/' will be stripped.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.Language">
+            <summary>
+            Returns or sets the language string. The language is (usually) an ISO 639-3 string, the default value is "eng".
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.PageSetMode">
+            <summary>
+            Returns or sets the possible modes for page layout analysis.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.ResultFormat">
+            <summary>
+            Returns or sets the OCR output format.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.NumericOnly">
+            <summary>
+            Returns or sets whether to get the result in numbers only.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="P:Dynamsoft.OCR.Tesseract.PdfFontSize">
+            <summary>
+            Returns or sets the size for the PDF font.
+            </summary>
+            <exception cref="T:Dynamsoft.OCR.OCRException">
+            When an error occurs, please check OCRException.
+            </exception>
+        </member>
+        <member name="T:Dynamsoft.Tesseract.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.DynamsoftOCRx64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.DynamsoftOCRx86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.PDFLicenseInvalid">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.TXTLicenseInvalid">
+            <summary>
+              Looks up a localized string similar to Your license number for the OCR SDK doesn’t exist or it’s invalid..
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Tesseract.Resource.watermark_greyscale">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
