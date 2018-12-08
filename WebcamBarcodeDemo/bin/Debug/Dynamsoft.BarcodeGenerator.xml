@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dynamsoft.BarcodeGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:Dynamsoft.Barcode.BarcodeGenerator">
+            <summary>
+            Defines a class provides functions for generating barcode data. 
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.Barcode.BarcodeGenerator.AddBarcode(System.Drawing.Bitmap,Dynamsoft.Barcode.Enums.EnumBarcodeFormat,System.String,System.String,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Adds a specified type of barcode on a specific area of an image.
+            </summary>
+            <param name="bit">Specifies the image.</param>
+            <param name="format">Specifies the type of the barcode. </param>
+            <param name="strText">A string represents data in ASCII.</param>
+            <param name="strHumanText">A human-readable string on the barcode.</param>
+            <param name="x">Specifies the x-coordinate of the upper-left corner of the rectangle.</param>
+            <param name="y">Specifies the y-coordinate of the upper-left corner of the rectangle.</param>
+            <param name="fScale">The scale for the generated barcode.</param>
+            <returns>Bitmap</returns>
+            <exception cref="!:Dynamsoft.BarcodeGenerator.BarcodeGeneratorException">
+            When an error occurs, please check BarcodeGeneratorException.
+            </exception>
+        </member>
+        <member name="M:Dynamsoft.Barcode.BarcodeGenerator.CreateBarcode(Dynamsoft.Barcode.Enums.EnumBarcodeFormat,System.String,System.String,System.Single)">
+            <summary>
+            Create a specified type of barcode on a specific area of an image.
+            </summary>
+            <param name="enumBarcodeFormat">Specifies the type of the barcode.</param>
+            <param name="strText">A string represents data in ASCII.</param>
+            <param name="strHumanText">A human-readable string on the barcode.</param>
+            <param name="fScale">The scale for the generated barcode.</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:Dynamsoft.Barcode.BarcodeGenerator.#ctor(System.String)">
+            <summary>
+            Initialize the barcode generator component with features to generate a barcode.
+            </summary>
+            <param name="strLicense">Specifies the license.</param>
+            <exception cref="!:Dynamsoft.BarcodeGenerator.BarcodeGeneratorException">
+            When an error occurs, please check BarcodeGeneratorException.
+            </exception>
+        </member>
+        <member name="T:Dynamsoft.Barcode.Generator.ErrorCode">
+            <summary>
+            Defines the error code of Dynamsoft.BarcodeGenerator module.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumSuccess">
+            <summary>
+            Successful.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumLicenseInvalid">
+            <summary>
+            Invalid license.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumLicenseExpired">
+            <summary>
+            Expired license.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumSystemException">
+            <summary>
+            System exception.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumUnknown">
+            <summary>
+            Unkown error.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumFailedToLoadModule">
+            <summary>
+            Failed to load barcode generator module.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumFailedToGetFunction">
+            <summary>
+            Failed to get function.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumFailedToCreateBarcode">
+            <summary>
+            Failed to get barcode.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Generator.ErrorCode.enumInvalidValue">
+            <summary>
+            Invalid value.
+            </summary>
+        </member>
+        <member name="T:Dynamsoft.Barcode.Generator.BarcodeGeneratorException">
+            <summary>
+            Represents errors that occur during application execution.
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.Barcode.Generator.BarcodeGeneratorException.#ctor">
+            <summary>
+            Create an instance of barcode generator exception.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Barcode.Generator.BarcodeGeneratorException.Code">
+            <summary>
+            Return or set error code of Dynamsoft.BarcodeGenerator.dll.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Barcode.Generator.BarcodeGeneratorException.Message">
+            <summary>
+            Get a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Barcode.Generator.BarcodeGeneratorException.StackTrace">
+            <summary>
+            Get a string representation of the immediate frames on the call stack.
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.Common.CImage.Dispose">
+            <summary>
+            Dispose the object.
+            </summary>
+            
+            <remarks><para>Frees unmanaged resources used by the object. The object becomes unusable
+            after that.</para>
+            
+            <par><note>The method needs to be called only in the case if unmanaged image was allocated
+            using <see cref="!:Create"/> method. In the case if the class instance was created using constructor,
+            this method does not free unmanaged memory.</note></par>
+            </remarks>
+            
+        </member>
+        <member name="M:Dynamsoft.Common.CImage.Dispose(System.Boolean)">
+            <summary>
+            Dispose the object.
+            </summary>
+            
+            <param name="disposing">Indicates if disposing was initiated manually.</param>
+            
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Dynamsoft.Common.SImageInfo.last_c_index" -->
+        <member name="T:Dynamsoft.Common.Util">
+            <summary>
+            Summary description for Util.
+            </summary>
+        </member>
+        <member name="M:Dynamsoft.Common.Util.Clone(System.Drawing.Bitmap)">
+            <summary>
+            Clone image.
+            </summary>
+            
+            <param name="source">Source image.</param>
+            
+            <returns>Return clone of the source image.</returns>
+            
+            <remarks>The original <see cref="M:System.Drawing.Bitmap.Clone(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">Bitmap.Clone()</see>
+            does not produce the desired result - it does not create an actual clone (it does not create a copy
+            of the image). That is why this method was implemented to provide the functionality.</remarks> 
+            
+        </member>
+        <member name="M:Dynamsoft.Common.Util.Clone(System.Drawing.Imaging.BitmapData)">
+             <summary>
+             Clone image.
+             </summary>
+             
+             <param name="sourceData">Source image data.</param>
+            
+             <returns>Clones image from source image data. The message does not clone pallete in the
+             case if the source image has indexed pixel format.</returns>
+             
+        </member>
+        <member name="M:Dynamsoft.Common.Util.CopyUnmanagedMemory(System.IntPtr,System.IntPtr,System.Int32)">
+             <summary>
+             Copy block of unmanaged memory.
+             </summary>
+             
+             <param name="dst">Destination pointer.</param>
+             <param name="src">Source pointer.</param>
+             <param name="count">Memory block's length to copy.</param>
+             
+             <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+             
+             <remarks><para>This function is required because of the fact that .NET does
+             not provide any way to copy unmanaged blocks, but provides only methods to
+             copy from unmanaged memory to managed memory and vise versa.</para></remarks>
+            
+        </member>
+        <member name="T:Dynamsoft.Barcode.Enums.EnumBarcodeFormat">
+            <summary>
+            The barcode type supported by BarcodeGenerator.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Enums.EnumBarcodeFormat.CODE_39">
+            <summary>
+            Code_39 format.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Enums.EnumBarcodeFormat.CODE_128">
+            <summary>
+            Code_128 format.
+            </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Enums.EnumBarcodeFormat.PDF417">
+            <summary>PDF417 format. </summary>
+        </member>
+        <member name="F:Dynamsoft.Barcode.Enums.EnumBarcodeFormat.QR_CODE">
+            <summary>QR Code 2D barcode format. </summary>
+        </member>
+        <member name="T:Dynamsoft.Barcode.Generator.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Barcode.Generator.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dynamsoft.Barcode.Generator.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
